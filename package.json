@@ -1,0 +1,46 @@
+{
+  "name": "@prismism/mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server for Prismism — shareable links for any file",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "prismism-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "tsx": "^4.0.0",
+    "typescript": "^5.7.0",
+    "zod": "^3.25.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "prismism",
+    "file-sharing",
+    "ai-tools"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prismism-dev/mcp-server.git"
+  },
+  "homepage": "https://prismism.dev"
+}
