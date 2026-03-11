@@ -1,13 +1,14 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.prismism-dev/prismism",
-  "title": "Prismism — DocSend for AI Agents",
-  "description": "Upload any file and get a shareable, tracked link. PDF, HTML, Markdown, images, video. View analytics, email capture, webhooks. API-first for AI agents.",
+  "name": "dev.prismism/mcp",
+  "title": "Prismism",
+  "description": "Upload any file, get a tracked shareable link. DocSend for AI agents.",
+  "version": "0.2.1",
+  "websiteUrl": "https://prismism.dev",
   "repository": {
     "url": "https://github.com/prismism-dev/mcp-server",
     "source": "github"
   },
-  "version": "0.2.0",
   "remotes": [
     {
       "type": "streamable-http",
@@ -15,8 +16,8 @@
       "headers": [
         {
           "name": "x-api-key",
-          "description": "Your Prismism API key. Get one free at https://prismism.dev",
-          "isRequired": false,
+          "description": "Your Prismism API key from prismism.dev/dashboard",
+          "isRequired": true,
           "isSecret": true
         }
       ]
@@ -26,19 +27,10 @@
     {
       "registryType": "npm",
       "identifier": "@prismism/mcp-server",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "transport": {
         "type": "stdio"
-      },
-      "environmentVariables": [
-        {
-          "name": "PRISMISM_API_KEY",
-          "description": "Your Prismism API key. Get one free at https://prismism.dev",
-          "isRequired": false,
-          "isSecret": true,
-          "format": "string"
-        }
-      ]
+      }
     }
   ]
 }

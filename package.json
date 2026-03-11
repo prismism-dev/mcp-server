@@ -1,6 +1,6 @@
 {
   "name": "@prismism/mcp-server",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "mcpName": "io.github.prismism-dev/prismism",
   "description": "MCP server for Prismism — shareable links for any file",
   "license": "MIT",
