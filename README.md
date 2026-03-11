@@ -1,8 +1,8 @@
 # @prismism/mcp-server
 
-MCP server for [Prismism](https://prismism.dev) — shareable links for any file.
+MCP server for [Prismism](https://prismism.dev) — **DocSend for AI agents.**
 
-Upload files and get tracked, shareable links directly from Claude Desktop, Cursor, Copilot, Windsurf, or any MCP-compatible agent.
+Upload any file → get a tracked, shareable link. PDF, HTML, Markdown, images, video. View analytics, email capture, webhooks.
 
 ## Quick Start
 
@@ -10,47 +10,83 @@ Upload files and get tracked, shareable links directly from Claude Desktop, Curs
 
 Create a free account at [prismism.dev](https://prismism.dev) or use the `prismism_register` tool after setup.
 
-### 2. Add to your MCP config
+### 2. Connect your client
 
-#### Claude Desktop
+#### Hosted endpoint (recommended)
 
-Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+No install needed — connect directly to the Prismism API:
+
+**Claude Code**
+
+```bash
+claude mcp add prismism --transport http https://prismism.dev/mcp \
+  --header "x-api-key: pal_your_key_here"
+```
+
+**Claude Desktop** — edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "prismism": {
-      "command": "npx",
-      "args": ["@prismism/mcp-server"],
-      "env": {
-        "PRISMISM_API_KEY": "pal_your_key_here"
+      "url": "https://prismism.dev/mcp",
+      "headers": {
+        "x-api-key": "pal_your_key_here"
       }
     }
   }
 }
 ```
 
-#### Cursor
-
-Edit `.cursor/mcp.json` in your project root:
+**Cursor** — edit `.cursor/mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "prismism": {
-      "command": "npx",
-      "args": ["@prismism/mcp-server"],
-      "env": {
-        "PRISMISM_API_KEY": "pal_your_key_here"
+      "url": "https://prismism.dev/mcp",
+      "headers": {
+        "x-api-key": "pal_your_key_here"
       }
     }
   }
 }
 ```
 
-#### Windsurf
+**Windsurf** — edit `~/.codeium/windsurf/mcp_config.json`:
 
-Edit `~/.codeium/windsurf/mcp_config.json`:
+```json
+{
+  "mcpServers": {
+    "prismism": {
+      "serverUrl": "https://prismism.dev/mcp",
+      "headers": {
+        "x-api-key": "pal_your_key_here"
+      }
+    }
+  }
+}
+```
+
+**VS Code** — edit `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "prismism": {
+      "type": "http",
+      "url": "https://prismism.dev/mcp",
+      "headers": {
+        "x-api-key": "pal_your_key_here"
+      }
+    }
+  }
+}
+```
+
+#### Local (stdio) — alternative
+
+Run via npx if you prefer local transport:
 
 ```json
 {
@@ -72,16 +108,16 @@ Ask your agent: **"Use the prismism_health tool to check the connection"**
 
 ## Tools
 
-| Tool | Description |
-|------|-------------|
-| `prismism_health` | Check connection and auth status |
-| `prismism_register` | Create account + get API key (one-time) |
-| `prismism_publish` | Upload a file and get a shareable link |
-| `prismism_list` | List your artifacts |
-| `prismism_get` | Get artifact details + analytics |
-| `prismism_update` | Update title, download permissions, password |
-| `prismism_delete` | Permanently delete an artifact |
-| `prismism_account` | Get account info, plan, and usage |
+| Tool | Auth required | Description |
+|------|:---:|-------------|
+| `prismism_health` | — | Check connection and auth status |
+| `prismism_register` | — | Create account + get API key (one-time) |
+| `prismism_publish` | ✓ | Upload a file and get a shareable link |
+| `prismism_list` | ✓ | List your artifacts with pagination |
+| `prismism_get` | ✓ | Get artifact details + analytics |
+| `prismism_update` | ✓ | Update title, download settings, password |
+| `prismism_delete` | ✓ | Permanently delete an artifact |
+| `prismism_account` | ✓ | Get account info, plan, and usage |
 
 ### Publishing files
 
@@ -137,8 +173,8 @@ On error:
 
 ## Requirements
 
-- Node.js 18 or later
-- npm or npx
+- **Hosted endpoint**: No requirements — works with any MCP client
+- **Local (stdio)**: Node.js 18+, npm or npx
 
 ## License
 

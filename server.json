@@ -1,0 +1,44 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.prismism-dev/prismism",
+  "title": "Prismism — DocSend for AI Agents",
+  "description": "Upload any file and get a shareable, tracked link. PDF, HTML, Markdown, images, video. View analytics, email capture, webhooks. API-first for AI agents.",
+  "repository": {
+    "url": "https://github.com/prismism-dev/mcp-server",
+    "source": "github"
+  },
+  "version": "0.2.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://prismism.dev/mcp",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "description": "Your Prismism API key. Get one free at https://prismism.dev",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@prismism/mcp-server",
+      "version": "0.2.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "PRISMISM_API_KEY",
+          "description": "Your Prismism API key. Get one free at https://prismism.dev",
+          "isRequired": false,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}
